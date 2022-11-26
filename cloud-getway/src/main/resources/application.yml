@@ -1,0 +1,45 @@
+server:
+  port: 9191
+
+spring:
+  application:
+    name: API-GETWAY
+
+  cloud:
+    gateway:
+      routes:
+        - id: acc-service
+          uri: lb://acc-service
+          predicates:
+            - Path=/api/account/**
+          filters:
+            - AuthenticationFilter
+
+
+        - id: pro-service
+          uri: lb://pro-service
+          predicates:
+            - Path=/api/product/**
+          filters:
+            - AuthenticationFilter
+
+        - id: ord-service
+          uri: lb://ord-service
+          predicates:
+            - Path=/api/order/**
+          filters:
+            - AuthenticationFilter
+
+#eureka:
+#  client:
+#    register-with-eureka: true
+#    fetch-registry: true
+#    service-url:
+#      defaultZone: http://localhost:8761/eureka/
+#    instance:
+#      hostname: localhost
+
+jwt:
+  secret: testing
+  validity: 20
+  authDisabled: true

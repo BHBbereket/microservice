@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: creditcard
+spec:
+  selector:
+    matchLabels:
+      app: creditcard
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: creditcard
+    spec:
+      containers:
+        - name: creditcard
+          image: bhbbereket/creditcard-service
+          ports:
+            - containerPort: 8010
+---
+# Define a 'Service' To Expose the application
+apiVersion: v1
+kind: Service
+metadata:
+  name: cre-service
+spec:
+  ports:
+    - protocol: "TCP"
+      port: 8010    # Port inside the cluster
+      targetPort: 8010   # Port exposed to the outside
+  selector:
+    app: creditcard
+  type: NodePort

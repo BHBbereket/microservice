@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bank
+spec:
+  selector:
+    matchLabels:
+      app: bank
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: bank
+    spec:
+      containers:
+        - name: bank
+          image: bhbbereket/bank-service
+          ports:
+            - containerPort: 8011
+---
+# Define a 'Service' To Expose the application
+apiVersion: v1
+kind: Service
+metadata:
+  name: ban-service
+spec:
+  ports:
+    - protocol: "TCP"
+      port: 8011    # Port inside the cluster
+      targetPort: 8011   # Port exposed to the outside
+  selector:
+    app: bank
+  type: NodePort

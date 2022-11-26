@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: paypal
+spec:
+  selector:
+    matchLabels:
+      app: paypal
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: paypal
+    spec:
+      containers:
+        - name: paypal
+          image: bhbbereket/paypal-service
+          ports:
+            - containerPort: 8012
+---
+# Define a 'Service' To Expose the application
+apiVersion: v1
+kind: Service
+metadata:
+  name: pal-service
+spec:
+  ports:
+    - protocol: "TCP"
+      port: 8012    # Port inside the cluster
+      targetPort: 8012   # Port exposed to the outside
+  selector:
+    app: paypal
+  type: NodePort

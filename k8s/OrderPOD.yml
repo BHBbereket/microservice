@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: order
+spec:
+  selector:
+    matchLabels:
+      app: order
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: order
+    spec:
+      containers:
+        - name: order
+          image: bhbbereket/order-service
+          ports:
+            - containerPort: 8081
+          env: # Setting Environmental Variables
+            - name: DB_HOST   # Setting Database host address
+              value: orderdb
+            - name: DB_NAME  # Setting Database name
+              value: order
+            - name: DB_USERNAME  # Setting Database username
+              value: root
+            - name: DB_PASSWORD # Setting Database password
+              value: root
+---
+# Define a 'Service' To Expose the application
+apiVersion: v1
+kind: Service
+metadata:
+  name: ord-service
+spec:
+  ports:
+    - protocol: "TCP"
+      port: 8081    # Port inside the cluster
+      targetPort: 8081   # Port exposed to the outside
+  selector:
+    app: order
+  type: NodePort

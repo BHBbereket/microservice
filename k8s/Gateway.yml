@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gateway
+spec:
+  selector:
+    matchLabels:
+      app: gateway
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: gateway
+    spec:
+      containers:
+        - name: gateway
+          image: bhbbereket/gateway-service
+          ports:
+            - containerPort: 9191
+---
+# Define a 'Service' To Expose the application
+apiVersion: v1
+kind: Service
+metadata:
+  name: gat-service
+spec:
+  ports:
+    - protocol: "TCP"
+      port: 9191    # Port inside the cluster
+      targetPort: 9191   # Port exposed to the outside
+  selector:
+    app: gateway
+  type: LoadBalancer

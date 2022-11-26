@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: product
+spec:
+  selector:
+    matchLabels:
+      app: product
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: product
+    spec:
+      containers:
+        - name: product
+          image: bhbbereket/product-service
+          ports:
+            - containerPort: 8083
+          env: # Setting Environmental Variables
+            - name: DB_HOST   # Setting Database host address
+              value: productdb
+            - name: DB_NAME  # Setting Database name
+              value: product
+            - name: DB_USERNAME  # Setting Database username
+              value: root
+            - name: DB_PASSWORD # Setting Database password
+              value: root
+---
+# Define a 'Service' To Expose the application
+apiVersion: v1
+kind: Service
+metadata:
+  name: pro-service
+spec:
+  ports:
+    - protocol: "TCP"
+      port: 8083    # Port inside the cluster
+      targetPort: 8083   # Port exposed to the outside
+  selector:
+    app: product
+  type: NodePort

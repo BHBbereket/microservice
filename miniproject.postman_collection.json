@@ -1,0 +1,327 @@
+{
+	"info": {
+		"_postman_id": "9904f153-9bed-4b09-aca6-b3e8a8671305",
+		"name": "miniproject",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "createProduct",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"bereket\",\r\n    \"price\":124.0,    \r\n    \"vendor\":\"bereket\",\r\n    \"category\":\"FOOD\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8083/api/product/addProduct",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"product",
+						"addProduct"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createAccount",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fristname\":\"bereket\",\r\n    \"lastname\":\"bhb\",\r\n    \"email\":\"bhb@gmail.com\",\r\n    \"password\":\"123\",\r\n    \"roles\":[\r\n        {\r\n            \"name\":\"user\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/account/save",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"account",
+						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "creditcard",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"credit-card\",\r\n        \"cardnumber\":123456789,\r\n        \"ccv\":\"QSDFVR2H4224N\",\r\n        \"owner_id\":1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/account/addCreditCard",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"account",
+						"addCreditCard"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "bank",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"name\":\"bank\",\r\n        \"account_number\":3215468,\r\n        \"account_type\":\"cheking\",\r\n        \"owner_id\":1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/account/addBank",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"account",
+						"addBank"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "paypal",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"paypal\",\r\n    \"owner_id\":1,\r\n    \"paypal_number\":123456,\r\n    \"issued_Country\":\"USA\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/account/addPayPal",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"account",
+						"addPayPal"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAccount",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhYWFAZ21haWwuY29tIiwiaWF0IjoxNjYzODE4MDg1LCJleHAiOjE2NjM4MTkyODV9._X0ufOapOsfPqT9u19yhsS2aeY4Nv8sXvV_zK7s0kQ3O2fBKFSc-KCdjxUrtsQiZlj6YgQ1nniERdz4vtcS2Jw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9191/api/account/getaccount/1",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"api",
+						"account",
+						"getaccount",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addAllProducts",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"name\":\"bereket\",\r\n        \"price\":124.0,    \r\n        \"vendor\":\"bereket\",\r\n        \"category\":\"FOOD\"\r\n    },\r\n    {\r\n        \"name\":\"Awis\",\r\n        \"price\":984.0,    \r\n        \"vendor\":\"bereket\",\r\n        \"category\":\"FOOD\"\r\n    },\r\n    {\r\n        \"name\":\"jerry\",\r\n        \"price\":124.0,    \r\n        \"vendor\":\"bereket\",\r\n        \"category\":\"ELECTRONICS\"\r\n    },\r\n    {\r\n        \"name\":\"nahom\",\r\n        \"price\":124.0,    \r\n        \"vendor\":\"bereket\",\r\n        \"category\":\"ELECTRONICS\"\r\n    },\r\n    {\r\n        \"name\":\"Abdi\",\r\n        \"price\":1874.0,    \r\n        \"vendor\":\"bereket\",\r\n        \"category\":\"APPAREL\"\r\n    },\r\n    {\r\n        \"name\":\"bereket\",\r\n        \"price\":184.0,    \r\n        \"vendor\":\"bereket\",\r\n        \"category\":\"FOOD\"\r\n    },\r\n    {\r\n        \"name\":\"Ashu\",\r\n        \"price\":124.0,    \r\n        \"vendor\":\"bereket\",\r\n        \"category\":\"APPAREL\"\r\n    },\r\n    {\r\n        \"name\":\"hassen\",\r\n        \"price\":1544.0,    \r\n        \"vendor\":\"bereket\",\r\n        \"category\":\"ELECTRONICS\"\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8083/api/product/addlist",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"product",
+						"addlist"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "orderplace",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"payment_id\":1,\r\n    \"productDTOS\":[\r\n    {\r\n        \"product_id\":2,\r\n        \"quantity\":60\r\n    },\r\n    {\r\n        \"product_id\":7,\r\n        \"quantity\":30\r\n    },\r\n    {\r\n        \"product_id\":5,\r\n        \"quantity\":80\r\n    }\r\n\r\n]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/api/order/add/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"order",
+						"add",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "makepayment",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/api/order/make_payment/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"order",
+						"make_payment",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "setpreferd",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/account/setPrefered/1/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"account",
+						"setPrefered",
+						"1",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"aaa@gmail.com\",\r\n    \"password\":\"123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9191/authenticate",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

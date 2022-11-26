@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="product" />
+        <module name="shipment" />
+        <module name="cloud-getway" />
+        <module name="payment" />
+        <module name="stock" />
+        <module name="creditcard" />
+        <module name="account" />
+        <module name="order" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="account" target="17" />
+      <module name="bankAccount" target="17" />
+      <module name="cloud-getway" target="17" />
+      <module name="creditcard" target="17" />
+      <module name="order" target="17" />
+      <module name="payment" target="17" />
+      <module name="paypal" target="17" />
+      <module name="product" target="17" />
+      <module name="serviceregistry" target="17" />
+      <module name="shipment" target="17" />
+      <module name="stock" target="17" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="account" options="-parameters" />
+      <module name="bankAccount" options="-parameters" />
+      <module name="cloud-getway" options="-parameters" />
+      <module name="creditcard" options="-parameters" />
+      <module name="order" options="-parameters" />
+      <module name="payment" options="-parameters" />
+      <module name="paypal" options="-parameters" />
+      <module name="product" options="-parameters" />
+      <module name="serviceregistry" options="-parameters" />
+      <module name="shipment" options="-parameters" />
+      <module name="stock" options="-parameters" />
+    </option>
+  </component>
+</project>

@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stock
+spec:
+  selector:
+    matchLabels:
+      app: stock
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: stock
+    spec:
+      containers:
+        - name: stock
+          image: bhbbereket/stock-service
+          ports:
+            - containerPort: 8084
+          env: # Setting Environmental Variables
+            - name: DB_HOST   # Setting Database host address
+              value: stockdb
+            - name: DB_NAME  # Setting Database name
+              value: stock
+            - name: DB_USERNAME  # Setting Database username
+              value: root
+            - name: DB_PASSWORD # Setting Database password
+              value: root
+---
+# Define a 'Service' To Expose the application
+apiVersion: v1
+kind: Service
+metadata:
+  name: sto-service
+spec:
+  ports:
+    - protocol: "TCP"
+      port: 8084    # Port inside the cluster
+      targetPort: 8084   # Port exposed to the outside
+  selector:
+    app: stock
+  type: NodePort

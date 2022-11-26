@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payment
+spec:
+  selector:
+    matchLabels:
+      app: payment
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: payment
+    spec:
+      containers:
+        - name: payment
+          image: bhbbereket/payment-service
+          ports:
+            - containerPort: 8085
+---
+# Define a 'Service' To Expose the application
+apiVersion: v1
+kind: Service
+metadata:
+  name: pay-service
+spec:
+  ports:
+    - protocol: "TCP"
+      port: 8085    # Port inside the cluster
+      targetPort: 8085   # Port exposed to the outside
+  selector:
+    app: payment
+  type: NodePort
